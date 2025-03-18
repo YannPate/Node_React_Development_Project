@@ -5,7 +5,8 @@ cd C:/Users/yannp/Documents/GitHub/Node_React_Development_Project/backend/ || { 
 
 # Start the Docker containers
 echo "Launching Docker containers using docker-compose..."
-docker compose up -d # -d flag runs containers in detached mode
+docker build -t postgresconfig . # -d flag runs containers in detached mode
+docker run -d --name postgres123 -p 5432:5432 postgresconfig
 
 # Verify if Docker containers started successfully
 if [ $? -eq 0 ]; then
