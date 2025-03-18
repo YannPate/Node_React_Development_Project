@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 // Configurer la connexion Sequelize
 const sequelize = new Sequelize(
-  "postgres://userDev:devPass123@127.0.0.1:5432/dev_db", 
+  "postgres://devUser:pass123@127.0.0.1:5432/dev_db", 
   {}
 );
 

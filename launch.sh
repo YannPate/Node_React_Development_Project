@@ -1,7 +1,7 @@
 #!/bin/bash
 # Navigate to the backend directory
 echo "Changing to the backend directory..."
-cd SoftwareUsefull/GitFolder/SchoolManagorV0.5/backend/ || { echo "Could not find the backend directory."; exit 1; }
+cd C:/Users/yannp/Documents/GitHub/Node_React_Development_Project/backend/ || { echo "Could not find the backend directory."; exit 1; }
 
 # Start the Docker containers
 echo "Launching Docker containers using docker-compose..."

@@ -1,0 +1,239 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Course API",
+      "version": "0.5",
+      "description": "API to manage courses"
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "Check if the server is working",
+          "responses": {
+            "200": {
+              "description": "Server is alive",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string",
+                    "example": "alive"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/courses": {
+        "get": {
+          "summary": "Get all courses",
+          "responses": {
+            "200": {
+              "description": "List of all courses",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer" },
+                        "course": { "type": "string" },
+                        "module": { "type": "string" },
+                        "tdSubmission": { "type": "string", "format": "date" },
+                        "nextExam": { "type": "string", "format": "date" },
+                        "project": { "type": "string" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/course": {
+        "get": {
+          "summary": "Get a course by ID",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "description": "ID of the course",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 2
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Course details",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "course": { "type": "string" },
+                      "module": { "type": "string" },
+                      "tdSubmission": { "type": "string", "format": "date" },
+                      "nextExam": { "type": "string", "format": "date" },
+                      "project": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Add a new course",
+          "requestBody": {
+            "description": "Details of the course to be added",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "course": {
+                      "type": "string",
+                      "description": "Name of the course",
+                      "example": "Mathematics"
+                    },
+                    "module": {
+                      "type": "string",
+                      "description": "Module of the course",
+                      "example": "Algebra"
+                    },
+                    "tdSubmission": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Submission date for the course",
+                      "example": "2025-01-15T00:00:00.000Z"
+                    },
+                    "nextExam": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Next exam date for the course",
+                      "example": "2025-01-15T00:00:00.000Z"
+                    },
+                    "project": {
+                      "type": "string",
+                      "description": "Description of the project associated with the course",
+                      "example": "2025-01-15T00:00:00.000Z"
+                    }
+                  },
+                  "required": ["course", "module", "tdSubmission", "nextExam", "project"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Course added successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": { "type": "integer" },
+                      "course": { "type": "string" },
+                      "module": { "type": "string" },
+                      "tdSubmission": { "type": "string", "format": "date" },
+                      "nextExam": { "type": "string", "format": "date" },
+                      "project": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "summary": "Update an existing course",
+          "requestBody": {
+            "description": "Details to update the course",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the course to update",
+                      "example": 2
+                    },
+                    "column": {
+                      "type": "string",
+                      "description": "The column name to update",
+                      "example": "module"
+                    },
+                    "value": {
+                      "type": "string",
+                      "description": "The new value for the column",
+                      "example": "Calculus"
+                    }
+                  },
+                  "required": ["id", "column", "value"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Course updated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "integer",
+                    "description": "Number of rows affected",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a course by ID",
+          "requestBody": {
+            "description": "ID of the course to delete",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "description": "ID of the course to delete",
+                      "example": 12
+                    }
+                  },
+                  "required": ["id"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Course deleted successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "integer",
+                    "description": "Number of rows deleted",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
