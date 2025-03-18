@@ -1,0 +1,21 @@
+{
+    // For more details, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Angular Dev Server",
+        "type": "chrome",
+        "request": "launch",
+        "preLaunchTask": "npm: start",
+        "url": "http://localhost:4300/"
+      },
+      {
+        "name": "Angular Test Runner",
+        "type": "chrome",
+        "request": "launch",
+        "preLaunchTask": "npm: test",
+        "url": "http://localhost:9888/debug.html"
+      }
+    ]
+  }
+  

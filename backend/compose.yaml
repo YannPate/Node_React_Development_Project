@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: my_postgres_container
+    environment:
+      POSTGRES_USER: devUser         # Nouveau nom d'utilisateur
+      POSTGRES_PASSWORD: devPass123  # Nouveau mot de passe
+      POSTGRES_DB: DEV_DATABASE     # Nouveau nom de base de données
+    ports:
+      - "5433:5432"                 # Modification du port pour éviter les conflits
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistance des données
+
+volumes:
+  postgres_data:

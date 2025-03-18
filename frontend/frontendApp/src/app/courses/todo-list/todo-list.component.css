@@ -1,0 +1,23 @@
+.todo-list-container {
+    margin: 20px;
+  }
+  
+  .add-task {
+    margin-bottom: 15px;
+  }
+  
+  .task-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .task-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    margin-left: 10px;
+  }
+  

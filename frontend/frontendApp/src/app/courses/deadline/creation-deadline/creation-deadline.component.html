@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 p-2">
+            <label for="courseName" class="form-label text-primary">Course Name</label>
+            <input
+                type="text"
+                id="courseName"
+                class="form-control"
+                [(ngModel)]="course.course"
+                name="course"
+                placeholder="Type the course title"
+                required/>
+        </div>
+
+        <div class="col-md-4 p-2">
+            <label for="moduleName" class="form-label text-primary">Module</label>
+            <input
+                type="text"
+                id="moduleName"
+                class="form-control"
+                [(ngModel)]="course.module"
+                name="module"
+                placeholder="Enter module name"
+                required/>
+        </div>
+
+        <div class="col-md-4 p-2">
+            <label for="examDate" class="form-label text-primary">Next Exam Date</label>
+            <input
+                type="date"
+                id="examDate"
+                class="form-control"
+                [(ngModel)]="course.nextExam"
+                name="nextExam"
+                required/>
+        </div>
+
+        <div class="col-md-4 p-2">
+            <label for="submissionDate" class="form-label text-primary">TD Submission</label>
+            <input
+                type="date"
+                id="submissionDate"
+                class="form-control"
+                [(ngModel)]="course.tdSubmission"
+                name="tdSubmission"
+                required/>
+        </div>
+
+        <div class="col-md-4 p-2">
+            <label for="projectDate" class="form-label text-primary">Project Deadline</label>
+            <input
+                type="date"
+                id="projectDate"
+                class="form-control"
+                [(ngModel)]="course.project"
+                name="project"
+                required/>
+        </div>
+        
+        <div class="col-md-12 text-end">
+            <button (click)="createCourse()" class="btn btn-outline-primary">Create New Deadline</button>
+        </div>
+    </div>
+</div>

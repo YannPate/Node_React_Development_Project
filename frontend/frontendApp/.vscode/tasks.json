@@ -1,0 +1,43 @@
+{
+    // Visit: https://go.microsoft.com/fwlink/?LinkId=733558 for more details
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "npm",
+        "script": "dev-server",
+        "isBackground": true,
+        "problemMatcher": {
+          "owner": "typescript",
+          "pattern": "$tsc",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": {
+              "regexp": "(.*?)"
+            },
+            "endsPattern": {
+              "regexp": "compilation finished"
+            }
+          }
+        }
+      },
+      {
+        "type": "npm",
+        "script": "unit-test",
+        "isBackground": true,
+        "problemMatcher": {
+          "owner": "typescript",
+          "pattern": "$tsc",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": {
+              "regexp": "(.*?)"
+            },
+            "endsPattern": {
+              "regexp": "compilation finished"
+            }
+          }
+        }
+      }
+    ]
+  }
+  
