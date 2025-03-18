@@ -6,7 +6,7 @@ import { Courses } from './models/Courses.dto';
 @Injectable({
   providedIn: 'root'  // Ensures this service is available throughout the application
 })
-export class ApiService {
+export class ApiServiceService {
 
   private readonly http: HttpClient = inject(HttpClient); // Injecting HttpClient for API calls
 

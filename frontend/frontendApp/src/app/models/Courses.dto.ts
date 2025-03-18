@@ -1,4 +1,4 @@
-export interface CourseDetails {
+export interface Courses {
     id: number;
     courseName: string;
     moduleName: string;
@@ -6,4 +6,3 @@ export interface CourseDetails {
     nextExamDate: string | null;
     projectDate: string | null;
   }
-  

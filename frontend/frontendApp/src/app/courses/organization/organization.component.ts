@@ -41,9 +41,9 @@ export class OrganizationComponent {
   loadData(): void {
     this.apiService.getCourses().subscribe({
       next: data => {
-        this.rowDataModA = data.filter(item => item.module === 'Standard Track');
-        this.rowDataModB = data.filter(item => item.module === 'CCC');
-        this.rowDataModC = data.filter(item => item.module === 'Computer Science');
+        this.rowDataModA = data.filter(item => item.moduleName === 'Standard Track');
+        this.rowDataModB = data.filter(item => item.moduleName === 'CCC');
+        this.rowDataModC = data.filter(item => item.moduleName === 'Computer Science');
       },
       error: err => {
         console.error('Error fetching courses:', err);
