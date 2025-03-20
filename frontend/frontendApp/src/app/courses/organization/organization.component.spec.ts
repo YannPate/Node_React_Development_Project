@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { OrganizationComponent } from './organization.component';
-import { provideHttpClient, HttpClient } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
@@ -15,9 +15,9 @@ describe('OrganizationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OrganizationComponent], // Use declarations for components
+      declarations: [OrganizationComponent], // Déclaration du composant
       providers: [
-        ApiServiceService, // Providing ApiService for injection
+        ApiServiceService, // Fourniture du service API
         {
           provide: ActivatedRoute,
           useValue: {
@@ -26,15 +26,15 @@ describe('OrganizationComponent', () => {
           }
         },
         provideHttpClient(),
-        provideHttpClientTesting() // Providing the HttpTestingController
+        provideHttpClientTesting() // Fourniture du HttpTestingController
       ]
     }).compileComponents();
 
-    // Initialize components and service
+    // Initialisation des composants et services
     fixture = TestBed.createComponent(OrganizationComponent);
     component = fixture.componentInstance;
-    apiService = TestBed.inject(ApiServiceService); // Get ApiService
-    httpTestingController = TestBed.inject(HttpTestingController); // Get HttpTestingController
+    apiService = TestBed.inject(ApiServiceService); // Injection du service API
+    httpTestingController = TestBed.inject(HttpTestingController); // Injection du HttpTestingController
     fixture.detectChanges();
   });
 
@@ -48,20 +48,20 @@ describe('OrganizationComponent', () => {
       { id: 2, course: 'Course 2', module: 'Module 2' }
     ];
 
-    // Call the method that triggers the HTTP request
-    component.loadData(); // Assuming `loadData` method triggers API call
+    // Appelle la méthode qui déclenche la requête HTTP
+    component.loadData();
 
-    // Expect a GET request to the correct URL
+    // Vérifie qu'une requête GET a bien été effectuée
     const req = httpTestingController.expectOne('YOUR_API_URL_HERE');
-    expect(req.request.method).toBe('GET'); // Ensure it's a GET request
-    req.flush(mockResponse); // Return mock response
+    expect(req.request.method).toBe('GET'); // Vérifie que la requête est bien un GET
+    req.flush(mockResponse); // Retourne une réponse fictive
 
-    // Check that the rowData is updated with the mock response
+    // Vérifie que rowData a bien été mis à jour avec la réponse simulée
     expect(component.rowData).toEqual(mockResponse);
   });
 
   afterEach(() => {
-    // Ensure there are no pending requests after each test
+    // Vérifie qu'aucune requête n'est en attente après chaque test
     httpTestingController.verify();
   });
 });

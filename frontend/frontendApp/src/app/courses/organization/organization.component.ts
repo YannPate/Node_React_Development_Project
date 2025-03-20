@@ -19,6 +19,9 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   styleUrls: ['./organization.component.css']
 })
 export class OrganizationComponent {
+  rowData(rowData: any) {
+    throw new Error('Method not implemented.');
+  }
   theme1 = themeQuartz.withPart(colorSchemeDarkBlue);
   private readonly apiService: ApiServiceService = inject(ApiServiceService);
   toAdd: string = 'creation';
@@ -52,6 +55,10 @@ export class OrganizationComponent {
         alert('An error occurred while loading the courses.');
       }
     });
+  }
+
+  getRowData(index: number): Courses[] {
+    return index === 0 ? this.rowDataModA : index === 1 ? this.rowDataModB : this.rowDataModC;
   }
 
   addToogleButton(): void {
