@@ -6,7 +6,7 @@
                 type="text"
                 id="courseName"
                 class="form-control"
-                [(ngModel)]="course.course"
+                [(ngModel)]="course.courseName"
                 name="course"
                 placeholder="Type the course title"
                 required/>
@@ -18,7 +18,7 @@
                 type="text"
                 id="moduleName"
                 class="form-control"
-                [(ngModel)]="course.module"
+                [(ngModel)]="course.moduleName"
                 name="module"
                 placeholder="Enter module name"
                 required/>
@@ -30,7 +30,7 @@
                 type="date"
                 id="examDate"
                 class="form-control"
-                [(ngModel)]="course.nextExam"
+                [(ngModel)]="course.nextExamDate"
                 name="nextExam"
                 required/>
         </div>
@@ -41,7 +41,7 @@
                 type="date"
                 id="submissionDate"
                 class="form-control"
-                [(ngModel)]="course.tdSubmission"
+                [(ngModel)]="course.tdSubmissionDate"
                 name="tdSubmission"
                 required/>
         </div>
@@ -52,7 +52,7 @@
                 type="date"
                 id="projectDate"
                 class="form-control"
-                [(ngModel)]="course.project"
+                [(ngModel)]="course.projectDate"
                 name="project"
                 required/>
         </div>

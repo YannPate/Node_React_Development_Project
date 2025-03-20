@@ -55,6 +55,9 @@ describe('OrganizationComponent', () => {
     const req = httpTestingController.expectOne('YOUR_API_URL_HERE');
     expect(req.request.method).toBe('GET'); // Ensure it's a GET request
     req.flush(mockResponse); // Return mock response
+
+    // Check that the rowData is updated with the mock response
+    expect(component.rowData).toEqual(mockResponse);
   });
 
   afterEach(() => {

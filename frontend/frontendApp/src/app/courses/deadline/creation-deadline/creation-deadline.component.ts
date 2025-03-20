@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-creation-deadline',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './creation-deadline.component.html',
   styleUrl: './creation-deadline.component.css'
@@ -14,41 +15,26 @@ export class CreationDeadlineComponent {
     
   course: Courses = {
     id: -1,
-    course: '',
-    module: '',
-    tdSubmission: '',
-    nextExam: '',
-    project: '',
+    courseName: '',
+    moduleName: '',
+    tdSubmissionDate: null,
+    nextExamDate: null,
+    projectDate: null,
   };
 
-  // Calling the post method with the filled course
   createCourse() {
-    console.log("Submitting course:", this.course); // Ajout d'un log avant l'envoi
-
     this.apiService.createCourse(this.courseDateFormat(this.course)).subscribe({
       next: () => console.log("Course successfully created."),
-      error: error => console.error("Error while creating course:", error) // console.error pour les erreurs
+      error: (error: any) => console.error("Error while creating course:", error)
     });
   }
 
   courseDateFormat(course: Courses): Courses {
-    let updatedCourse: Courses = {
+    return {
       ...course,
-      course: course.course.trim(), // trim pour éviter les espaces inutiles
-      module: course.module.trim()
+      tdSubmissionDate: course.tdSubmissionDate ? new Date(course.tdSubmissionDate as any).toISOString() : null,
+      nextExamDate: course.nextExamDate ? new Date(course.nextExamDate as any).toISOString() : null,
+      projectDate: course.projectDate ? new Date(course.projectDate as any).toISOString() : null
     };
-
-    // Liste des champs de date à convertir
-    const dateFields: (keyof Courses)[] = ['tdSubmission', 'nextExam', 'project'];
-
-    dateFields.forEach(field => {
-      if (updatedCourse[field]) {
-        updatedCourse[field] = new Date(updatedCourse[field] as string).toISOString();
-      } else {
-        updatedCourse[field] = null;
-      }
-    });
-
-    return updatedCourse;
   }
 }

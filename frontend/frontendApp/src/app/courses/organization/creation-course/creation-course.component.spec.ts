@@ -36,8 +36,8 @@ describe('CreationCourseComponent', () => {
     expect(button.disabled).toBeTruthy(); // ✅ Vérifier que le bouton est désactivé au départ
 
     // Remplir les champs
-    component.course.course = 'Test Course';
-    component.course.module = 'Test Module';
+    component.course.courseName = 'Test Course';
+    component.course.moduleName = 'Test Module';
     fixture.detectChanges(); // Mettre à jour la vue
 
     expect(button.disabled).toBeFalsy(); // ✅ Vérifier que le bouton est activé après remplissage

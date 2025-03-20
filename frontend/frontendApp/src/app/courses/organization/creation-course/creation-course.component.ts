@@ -15,16 +15,16 @@ export class CreationCourseComponent {
 
   course: Courses = {
     id: -1,
-    course: '',
-    module: '',
-    tdSubmission: null,  // Peut être de type `Date | null`
-    nextExam: null,      // Peut être de type `Date | null`
-    project: null,       // Peut être de type `Date | null`
+    courseName: '',
+    moduleName: '',
+    tdSubmissionDate: null,  // Peut être de type `Date | null`
+    nextExamDate: null,      // Peut être de type `Date | null`
+    projectDate: null,       // Peut être de type `Date | null`
   };
 
   // Méthode pour créer un cours via l'API
   createCourse() {
-    if (this.course.course && this.course.module) {  // Vérification de la validité du formulaire
+    if (this.course.courseName && this.course.moduleName) {  // Vérification de la validité du formulaire
       this.apiService.createCourse(this.course).subscribe({
         next: () => {
           console.log("Course created successfully!");
@@ -43,6 +43,6 @@ export class CreationCourseComponent {
 
   // Vérifie si le formulaire est valide pour activer ou désactiver le bouton
   isFormValid(): boolean {
-    return this.course.course.trim() !== '' && this.course.module.trim() !== '';  // Vérification des champs obligatoires
+    return this.course.courseName.trim() !== '' && this.course.moduleName.trim() !== '';  // Vérification des champs obligatoires
   }
 }

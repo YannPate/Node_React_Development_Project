@@ -7,7 +7,7 @@
                     type="text"
                     id="course"
                     class="form-control"
-                    [(ngModel)]="course.course"
+                    [(ngModel)]="course.courseName"
                     name="course"
                     placeholder="Enter course name"
                     required
@@ -22,7 +22,7 @@
                     type="text"
                     id="module"
                     class="form-control"
-                    [(ngModel)]="course.module"
+                    [(ngModel)]="course.moduleName"
                     name="module"
                     placeholder="Enter module name"
                     required
@@ -35,7 +35,7 @@
                 <button 
                     (click)="createCourse()" 
                     class="btn btn-outline-success"
-                    [disabled]="!course.course || !course.module">
+                    [disabled]="!course.courseName || !course.moduleName">
                     Ajoutez le cours
                 </button>
             </div>

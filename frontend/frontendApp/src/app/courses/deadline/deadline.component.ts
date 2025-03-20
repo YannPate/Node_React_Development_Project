@@ -13,6 +13,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 
 @Component({
   selector: 'app-deadline',
+  standalone: true,
   imports: [AgGridAngular, RouterOutlet, RouterLink],
   templateUrl: './deadline.component.html',
   styleUrl: './deadline.component.css'
@@ -21,29 +22,28 @@ export class DeadlineComponent implements OnInit {
   private readonly apiService: ApiServiceService = inject(ApiServiceService);
   theme1 = themeQuartz.withPart(colorSchemeDarkBlue);
 
-  // Toggle Button
   toAdd: string = "creation";
   addButton: string = "ADD";
 
   rowData: Courses[] = [];
 
   colDefs: ColDef[] = [
-    { field: "course", flex: 1 },
-    { field: "module", flex: 1 },
+    { field: "courseName", flex: 1 },
+    { field: "moduleName", flex: 1 },
     {
-      field: "tdSubmission",
+      field: "tdSubmissionDate",
       editable: true,
       enableCellChangeFlash: true,
       flex: 1
     },
     {
-      field: "nextExam",
+      field: "nextExamDate",
       editable: true,
       enableCellChangeFlash: true,
       flex: 1
     },
     {
-      field: "project",
+      field: "projectDate",
       editable: true,
       enableCellChangeFlash: true,
       flex: 1
@@ -56,17 +56,17 @@ export class DeadlineComponent implements OnInit {
 
   loadData() {
     this.apiService.getCourses().subscribe({
-      next: data => this.rowData = data
-        .map(item => ({
+      next: (data: any) => this.rowData = data
+        .map((item: any) => ({
           id: item.id,
-          course: item.course,
-          module: item.module,
-          tdSubmission: this.dateToString(item.tdSubmission),
-          nextExam: this.dateToString(item.nextExam),
-          project: this.dateToString(item.project)
+          course: item.courseName,
+          module: item.moduleName,
+          tdSubmission: this.dateToString(item.tdSubmissionDate),
+          nextExam: this.dateToString(item.nextExamDate),
+          project: this.dateToString(item.projectDate)
         }))
-        .filter(item => ["Standard Track", "CCC", "Computer Science"].includes(item.module)), // ✅ Plus efficace
-      error: err => console.error('Deadline Component', err)
+        .filter((item: any) => ["Standard Track", "CCC", "Computer Science"].includes(item.module)), 
+      error: (err: any) => console.error('Deadline Component', err)
     });
   }
 
@@ -78,7 +78,7 @@ export class DeadlineComponent implements OnInit {
 
       this.apiService.updateCourse(row.id, column, formattedCell).subscribe({
         next: () => console.log("ok"),
-        error: err => console.error('Error at the deadline Component', err)
+        error: (err: any) => console.error('Error at the deadline Component', err)
       });
     }
   }
